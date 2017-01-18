@@ -1,0 +1,17 @@
+{
+  "name": "babel-plugin-transform-react-jade",
+  "version": "0.1.0",
+  "description": "Use Jade in place of JSX",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -w"
+  },
+  "author": "Farolan Faisal",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-preset-env": "^1.1.8",
+    "react": "^15.4.2",
+    "react-jade": "^2.5.0"
+  }
+}
