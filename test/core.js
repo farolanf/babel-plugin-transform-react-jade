@@ -64,4 +64,20 @@ describe('Transform Jade to React', function() {
         var result = transform(code);
         assert(/React\.createElement.*Hello Jade!/.test(result.code));
     });
+
+    it('should supports multiple templates in single source', function() {
+
+        function transform(code) {
+            return babel.transform(code, {
+                presets: ['env'],
+                plugins: [transformPluginReactJade],
+            });
+        }
+
+        var code = "function render() { jade`\ndiv\n\th1 Hi Jade!`; }";
+        code += "function render2() { jade`\ndiv\n\th1 Hello World!`; }";
+
+        var result = transform(code);
+        assert(/React\.createElement.*Hi Jade!(.|\n|\r)*React\.createElement.*Hello World!/.test(result.code));
+    });
 });
