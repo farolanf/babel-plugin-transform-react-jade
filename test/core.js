@@ -10,9 +10,15 @@ function dump(obj) {
 
 describe('Transform Jade to React', function() {
 
+    it('should get excess indent', function() {
+        assert.strictEqual(utils.getIndent('  div'), '  ');
+        assert.strictEqual(utils.getIndent('  .container'), '  ');
+        assert.strictEqual(utils.getIndent('  #container'), '  ');
+    });
+
     it('should normalize indent', function() {
         var code = `
-            div
+            .container
                 h1 Hello World!
         `;
         
@@ -20,7 +26,7 @@ describe('Transform Jade to React', function() {
         var lines = result.split("\n");
  
         assert.strictEqual(lines.length, 2);
-        assert(/^div$/.test(lines[0]), lines[0]);
+        assert(/^.container$/.test(lines[0]), lines[0]);
         assert(/^\s+h1 Hello World!$/.test(lines[1]), lines[1]);
     });
 
