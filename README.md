@@ -68,7 +68,7 @@ class Greeting extends React.Component {
 
     return jade`
       div
-        h1= 'Hello ' + name '!'
+        h1= 'Hello ' + name + '!'
     `;            
   }
 } 
